@@ -1,46 +1,28 @@
 import Image from "next/image";
-import LeadCaptureForm from "./LeadCaptureForm";
+import { ReactNode } from "react";
 
 export default function ToolPageLayout({
-  manufacturer,
+  children,
+  machine,
   tool,
+  formattedTool,
 }: {
-  manufacturer: string;
+  children: ReactNode;
+  machine: string;
   tool: string;
+  formattedTool: string;
 }) {
-  const formattedMachine = manufacturer.charAt(0).toUpperCase() + manufacturer.slice(1).replace(/-/g, ' ');
-  const formattedTool = tool.replace(/-/g, ' ');
-  const headline = `Your ${formattedMachine} isn’t the problem — your setup is.`;
-
   return (
-    <section className="max-w-6xl mx-auto px-4 py-16">
-      {/* Headline and Summary */}
-      <div className="mb-12 text-center">
-        <h1 className="text-3xl md:text-4xl font-bold mb-4">{headline}</h1>
-        <p className="text-gray-700 max-w-2xl mx-auto">
-          The <strong>{formattedTool}</strong> is a proven upgrade for the <strong>{formattedMachine}</strong>. If you're dealing with cracking,
-          misalignment, or wasted setup time — Technifold tools transform your finishing output immediately.
-        </p>
-      </div>
-
-      {/* Form + Benefits */}
-      <div className="grid md:grid-cols-2 gap-8 mb-12">
-        <div className="border rounded-xl shadow-md p-6">
-          <h2 className="font-semibold mb-2">Download Setup Guide</h2>
-          <LeadCaptureForm />
-        </div>
-        <div className="border rounded-xl shadow-md p-6">
-          <h2 className="font-semibold mb-2">Key Benefits</h2>
-          <ul className="list-disc pl-5 text-sm space-y-2">
-            <li>Install in minutes — no shaft removal required</li>
-            <li>Eliminate fibre cracking on coated and laminated stocks</li>
-            <li>Proven results across 85–350gsm digital, offset, and recycled stock</li>
-          </ul>
-        </div>
-      </div>
+    <section className="max-w-5xl mx-auto px-4 py-16">
+      <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center">
+        {formattedTool} for {machine}
+      </h1>
+      <p className="text-center text-gray-600 max-w-2xl mx-auto mb-10">
+        It&rsquo;s not your folder&rsquo;s fault &mdash; it&rsquo;s the setup. Technifold upgrades retrofit your finishing machine in minutes, eliminate fibre cracking, and save hours per week in setup time.
+      </p>
 
       {/* Tool-Specific Proof Image with Fallback */}
-      <div className="flex justify-center">
+      <div className="flex justify-center mb-10">
         <Image
           src={`/tool-proof/${tool}.png`}
           alt={`${formattedTool} visual proof`}
@@ -52,6 +34,8 @@ export default function ToolPageLayout({
           }}
         />
       </div>
+
+      {children}
     </section>
   );
 }
