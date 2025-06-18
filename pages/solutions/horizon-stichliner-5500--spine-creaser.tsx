@@ -1,0 +1,14 @@
+export const metadata = {
+  title: "Spine-Creaser for Horizon Stichliner 5500 | Technifold",
+  description: "Solve cracking, setup delays and finishing waste with the Technifold Spine-Creaser — proven upgrade for your Horizon Stichliner 5500.",
+  openGraph: {
+    title: "Spine-Creaser for Horizon Stichliner 5500 | Technifold",
+    description: "Solve cracking, setup delays and finishing waste with the Technifold Spine-Creaser — proven upgrade for your Horizon Stichliner 5500."
+  }
+};
+
+import ToolPageLayout from "../../components/ToolPageLayout";
+
+export default function Page() {
+  return <ToolPageLayout manufacturer="horizon-stichliner-5500" tool="spine-creaser" />;
+}
