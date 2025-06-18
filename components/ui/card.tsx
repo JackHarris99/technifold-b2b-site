@@ -1,7 +1,13 @@
-export function Card({ children }) {
-  return <div className="border rounded-xl p-4 shadow-sm bg-white">{children}</div>;
-}
+import { ReactNode } from "react";
 
-export function CardContent({ children, className = "" }) {
-  return <div className={className}>{children}</div>;
+type CardProps = {
+  children: ReactNode;
+};
+
+export function Card({ children }: CardProps) {
+  return (
+    <div className="rounded-2xl p-4 shadow-md border bg-white">
+      {children}
+    </div>
+  );
 }
